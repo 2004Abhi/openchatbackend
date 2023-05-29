@@ -30,7 +30,7 @@ app.use("/api",chatRouter)
 
 const socketIO = new Server(http, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
   },
 });
 
@@ -40,7 +40,7 @@ let typing=false;
 socketIO.on("connection", (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
   socket.on("message",(data) => {
-    axios.post("http://localhost:3001/api/chat",data);
+    axios.post(`${process.env.BASE_URL}/api/chat`,data);
     socketIO.emit("messageResponse", data);
   });
 
