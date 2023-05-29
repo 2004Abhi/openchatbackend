@@ -21,9 +21,9 @@ app.use(json())
 
 //create a http server
 const http=createServer(app)
-http.prependListener("request", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-});
+// http.prependListener("request", (req, res) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+// });
 
 //routes
 
