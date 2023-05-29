@@ -17,7 +17,9 @@ connectMongo()
 
 //create a http server
 const http=createServer(app)
-
+http.prependListener("request", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+});
 //cors
 app.use(cors());
 app.use(json())
