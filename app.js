@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors'
 import {Server} from 'socket.io'
 import chatRouter from './routes/chatRouter.js'
-import {createServer} from 'https'
+import {createServer} from 'http'
 import connectMongo from './config/db.js';
 import axios from 'axios';
 const app = express();
