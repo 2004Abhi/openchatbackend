@@ -5,7 +5,7 @@ import {Server} from 'socket.io'
 import chatRouter from './routes/chatRouter.js'
 import {createServer} from 'http'
 import connectMongo from './config/db.js';
-import axios from 'axios';
+// import axios from 'axios';
 const app = express();
 const PORT = process.env.PORT||3001;
 
@@ -45,7 +45,6 @@ let typing=false;
 socketIO.on("connection", (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
   socket.on("message",(data) => {
-    axios.post(`${process.env.BASE_URL}/api/chat`,data);
     socketIO.emit("messageResponse", data);
   });
 
