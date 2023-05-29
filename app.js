@@ -15,14 +15,16 @@ dotenv.config()
 //db connect
 connectMongo()
 
+//cors
+app.use(cors());
+app.use(json())
+
 //create a http server
 const http=createServer(app)
 http.prependListener("request", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 });
-//cors
-app.use(cors());
-app.use(json())
+
 //routes
 
 app.get("/", (request, response) => {
