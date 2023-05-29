@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors'
 import {Server} from 'socket.io'
 import chatRouter from './routes/chatRouter.js'
-import {createServer} from 'http'
+import {createServer} from 'https'
 import connectMongo from './config/db.js';
 import axios from 'axios';
 const app = express();
@@ -32,10 +32,11 @@ app.use("/api",chatRouter)
 
 const socketIO = new Server(http, {
   cors: {
-    origin: 'https://openchat-c37f.vercel.app',
+    origin: true,
+    credentials: true,
   },
+  allowEIO3: true,
 });
-
 let users = [];
 let typing=false;
 
